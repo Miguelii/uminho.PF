@@ -41,7 +41,7 @@ acrescEmail no em [] = [(no,[Email em])]
 acrescEmail no em ((n,lc):ag)
             | no /= n = (n,lc):(acrescEmail no em ag)
             | no == n = (n,(Email em):lc):ag
-
+            
 -- b)
 verEmails :: Nome -> Agenda -> Maybe [String]
 verEmails _ [] = Nothing
@@ -51,6 +51,7 @@ verEmails no ((n,lc):ag) | no /= n = verEmails no ag
              procEmail [] = []
              procEmail ((Email em):lc) = em:(procEmail lc)
              procEmail (_:lc) = procEmail lc
+             
 -- c)
 consTelefs :: [Contacto] -> [Integer]
 consTelefs [] = []
@@ -58,6 +59,7 @@ consTelefs ((Casa nt):lc) = nt:(consTelefs lc)
 consTelefs ((Tlm nt):lc) = nt:(consTelefs lc)
 consTelefs ((Trab nt):lc) = nt:(consTelefs lc)
 consTelefs (_:lc) = consTelefs lc
+
 -- d)
 casa :: Nome -> Agenda -> Maybe Integer
 casa no [] = Nothing
