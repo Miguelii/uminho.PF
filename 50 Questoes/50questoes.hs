@@ -280,7 +280,15 @@ constroiMSet1 (l:ls) = insereMSet1 l (constroiMSet1 ls)
 
 -- 42)
 
---partitionEithers1 :: [Either a b] -> ([a],[b]) 
+partitionEithers1 ::  [Either a b] -> ([a],[b])
+partitionEithers1 lista = (as lista, bs lista)
+  where
+    as ((Left x):xs)  = x : as xs
+    as ((Right x):xs) = as xs
+    as otherwise      = []
+    bs ((Right x):xs) = x : bs xs
+    bs ((Left x):xs)  = bs xs
+    bs otherwise      = []
 
 
 -- 43)
